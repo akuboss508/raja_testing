@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savory Soirée · Catering & Events</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #c9a96b;
+      --gold-light: #e6d5b8;
+      --dark: #1e1e1e;
+      --dark-soft: #2c2c2c;
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+      --border-radius: 20px;
+      --transition: all 0.25s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      border-bottom: 1px solid rgba(201, 169, 107, 0.15);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+    }
+
+    .logo i {
+      color: var(--gold);
+      margin-right: 8px;
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 500;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      transition: var(--transition);
+      box-shadow: 0 8px 16px rgba(201, 169, 107, 0.2);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border: 1.5px solid var(--gold);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    .btn:hover {
+      background: #b58d4a;
+      border-color: #b58d4a;
+      transform: translateY(-3px);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(105deg, rgba(30,30,30,0.55) 0%, rgba(20,20,20,0.45) 100%), 
+                  url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      color: white;
+      border-radius: 0 0 60px 60px;
+      margin-bottom: 40px;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding: 80px 0;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      font-weight: 300;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Section headings */
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .section-title .divider {
+      width: 90px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .about-text h3 {
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+    }
+
+    .about-text p {
+      margin-bottom: 24px;
+      color: #3a3a3a;
+    }
+
+    .about-img {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 420px;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Menu highlights */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .menu-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .menu-img {
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .menu-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .menu-card:hover .menu-img img {
+      transform: scale(1.05);
+    }
+
+    .menu-info {
+      padding: 28px 24px;
+    }
+
+    .menu-info h4 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .menu-info p {
+      color: #5a5a5a;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 1.3rem;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .service-item {
+      background: var(--white);
+      padding: 36px 20px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-bottom: 4px solid transparent;
+    }
+
+    .service-item:hover {
+      border-bottom-color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    .service-item i {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .service-item h4 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: var(--dark-soft);
+      color: white;
+      padding: 80px 0;
+      border-radius: 60px 60px 0 0;
+      margin-top: 40px;
+    }
+
+    .testimonials .section-title h2 {
+      color: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+      padding: 36px;
+      border-radius: 30px;
+      border: 1px solid rgba(201,169,107,0.3);
+    }
+
+    .testimonial-card i {
+      color: var(--gold);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .client {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .client-avatar {
+      width: 56px;
+      height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--dark);
+    }
+
+    /* Contact & Footer */
+    .contact-section {
+      padding: 80px 0 40px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+    }
+
+    .contact-info h3 {
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-details {
+      margin: 32px 0;
+    }
+
+    .contact-details li {
+      list-style: none;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.1rem;
+    }
+
+    .contact-details i {
+      width: 28px;
+      color: var(--gold);
+    }
+
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 40px;
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      transition: var(--transition);
+    }
+
+    .contact-form textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,107,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .container { padding: 0 24px; }
+      .hero h1 { font-size: 3.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--gold-light);
+        box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+        transform: translateY(-150%);
+        transition: transform 0.35s ease;
+        z-index: 99;
+      }
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      .hero h1 { font-size: 2.8rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .hero p { font-size: 1.1rem; }
+    }
+
+    /* Utility */
+    .text-gold { color: var(--gold); }
+    .mb-2 { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <i class="fas fa-utensils"></i> Savory Soirée
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h1>Crafting<br>unforgettable<br>gatherings</h1>
+        <p>Artisanal catering for weddings, corporate events & private soirées. Seasonal menus, impeccable service.</p>
+        <a href="#contact" class="btn">Request a tasting <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        <a href="#menu" class="btn btn-outline" style="margin-left: 16px;">View menus</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container about-grid">
+      <div class="about-text">
+        <h3>Beyond the plate —<br>a tailored experience</h3>
+        <p>Founded by chef Elena Marchetti, Savory Soirée brings restaurant-quality cuisine to your most cherished celebrations. We believe every event tells a story, and our food is the heart of it.</p>
+        <p>From intimate dinners to grand galas, we source locally, design custom menus, and handle every detail with elegance.</p>
+        <a href="#contact" class="btn" style="margin-top: 12px;">Meet our team</a>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" alt="Chef plating beautifully">
+      </div>
+    </section>
+
+    <!-- Featured Menu -->
+    <section id="menu" class="container">
+      <div class="section-title">
+        <h2>Signature selections</h2>
+        <div class="divider"></div>
+        <p style="margin-top: 16px; color: #5a5a5a;">Designed to impress · fully customizable</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Seasonal harvest salad">
+          </div>
+          <div class="menu-info">
+            <h4>Harvest table</h4>
+            <p>Heirloom tomatoes, burrata, basil oil, aged balsamic · gluten-free</p>
+            <span class="price">market price</span>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Herb-crusted lamb">
+          </div>
+          <div class="menu-info">
+            <h4>Provençal lamb</h4>
+            <p>Herb crust, roasted garlic purée, rosemary jus, seasonal vegetables</p>
+            <span class="price">per guest</span>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img">
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lavender crème brûlée">
+          </div>
+          <div class="menu-info">
+            <h4>Lavender brûlée</h4>
+            <p>Tahitian vanilla bean, caramelized sugar, seasonal berries</p>
+            <span class="price">dessert station</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container">
+      <div class="section-title">
+        <h2>Our catering services</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <i class="fas fa-ring"></i>
+          <h4>Weddings</h4>
+          <p>Full-service planning, custom tastings, day-of coordination.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-briefcase"></i>
+          <h4>Corporate</h4>
+          <p>Breakfast, luncheons, galas — tailored to your brand.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-champagne-glasses"></i>
+          <h4>Social events</h4>
+          <p>Birthdays, anniversaries, garden parties, holiday feasts.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-utensil-spoon"></i>
+          <h4>Private chef</h4>
+          <p>Intimate dinners at home, curated multi-course experiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>What our clients say</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <div class="testimonial-text">
+              "Savory Soirée exceeded every expectation. The food was exquisite, the staff was graceful, and Elena made our wedding feel like a Michelin experience."
+            </div>
+            <div class="client">
+              <div class="client-avatar">MW</div>
+              <div><strong>Michael & Willa</strong><br>wedding, 140 guests</div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <div class="testimonial-text">
+              "We use Savory Soirée for all our corporate galas. They’re inventive, professional, and always bring a 'wow' factor. Absolute pleasure to work with."
+            </div>
+            <div class="client">
+              <div class="client-avatar">CT</div>
+              <div><strong>Claire T.</strong><br>Events Director, Apex Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container contact-section">
+      <div class="section-title">
+        <h2>Let’s plan your event</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>We’d love to<br>hear from you</h3>
+          <p>Every great event starts with a conversation. Share your vision, and we’ll craft a proposal that fits your taste and budget.</p>
+          <ul class="contact-details">
+            <li><i class="fas fa-map-pin"></i> Chicago · New York · Los Angeles</li>
+            <li><i class="fas fa-phone-alt"></i> (312) 555-0187</li>
+            <li><i class="fas fa-envelope"></i> hello@savorysoiree.com</li>
+            <li><i class="fas fa-clock"></i> Mon–Sat · 9am–7pm</li>
+          </ul>
+          <div style="display: flex; gap: 20px; margin-top: 28px;">
+            <a href="#" style="color: var(--dark); font-size: 1.6rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: var(--dark); font-size: 1.6rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: var(--dark); font-size: 1.6rem;"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="cateringForm">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Email address" required>
+            <input type="tel" placeholder="Phone number">
+            <textarea rows="4" placeholder="Tell us about your event (date, guests, style)"></textarea>
+            <button type="submit" class="btn" style="width: 100%;">Send inquiry <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Savory Soirée Catering · Curated with <i class="fas fa-heart" style="color: var(--gold);"></i> · All rights reserved</p>
+      <p style="margin-top: 12px; font-size: 0.9rem;">Photos by Unsplash · Crafted for exceptional events</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (hamburger) {
+        hamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          const icon = hamburger.querySelector('i');
+          if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+
+      // Close mobile menu when a link is clicked
+      const navItems = document.querySelectorAll('.nav-links a');
+      navItems.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      });
+
+      // Smooth scroll + contact form handling
+      const form = document.getElementById('cateringForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          // Simple success feedback
+          const inputs = form.querySelectorAll('input, textarea');
+          let hasContent = false;
+          inputs.forEach(input => { if (input.value.trim() !== '') hasContent = true; });
+          if (hasContent) {
+            alert('✨ Thank you! Your inquiry has been sent. Our team will respond within 24 hours.');
+            form.reset();
+          } else {
+            alert('Please fill in at least your name and email.');
+          }
+        });
+      }
+
+      // Sticky header background change (optional subtle)
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+          header.style.background = 'rgba(255,255,255,0.9)';
+        } else {
+          header.style.background = 'rgba(255,255,255,0.85)';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
