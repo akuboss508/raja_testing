@@ -732,7 +732,7 @@
 
       // ---------- GOOGLE SHEETS INTEGRATION ----------
       // 👉 PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW 👈
-      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxU4FSnQ7K19pn4gOJdgP2l01lQ-G_QeuShFghmpXN5sFPSaFSToeolLg_Gq-ZVpIjD/exec';
       
       const form = document.getElementById('cateringForm');
       const statusDiv = document.getElementById('formStatus');
@@ -742,7 +742,7 @@
           e.preventDefault();
           
           // If URL not set, show fallback message
-          if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+          if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxU4FSnQ7K19pn4gOJdgP2l01lQ-G_QeuShFghmpXN5sFPSaFSToeolLg_Gq-ZVpIjD/exec') {
             statusDiv.innerHTML = '<span class="error">⚠️ Please set your Google Script URL in the code.</span>';
             return;
           }
