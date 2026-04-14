@@ -2,13 +2,12 @@
 // CONFIGURATION
 // ============================================
 const API_URL = 'https://script.google.com/macros/s/AKfycbxU4FSnQ7K19pn4gOJdgP2l01lQ-G_QeuShFghmpXN5sFPSaFSToeolLg_Gq-ZVpIjD/exec';
-const IMGBB_API_KEY = '886868f3fbb7fc9caefcd3069644ffa9'; // ✅ Your actual key
+const IMGBB_API_KEY = '886868f3fbb7fc9caefcd3069644ffa9';
 const ADMIN_PASSWORD = 'lucky2024';
 
 let menuItems = [];
 let cart = [];
 let isAdmin = false;
-let clickCount = 0;
 
 // DOM elements (existing)
 const menuGrid = document.getElementById('menuGridShop');
@@ -383,7 +382,7 @@ async function uploadImage(file) {
 }
 
 // ============================================
-// UI SETUP (including admin triggers)
+// UI SETUP
 // ============================================
 function setupUI() {
   document.getElementById('menuToggle').addEventListener('click', () => {
@@ -401,16 +400,12 @@ function setupUI() {
     filterAndRender(activeCat);
   });
 
-  // Hidden admin trigger (click lock icon 3 times)
-  adminTrigger.addEventListener('click', () => {
-    clickCount++;
-    if (clickCount >= 3) {
-      clickCount = 0;
-      loginModalOverlay.classList.add('active');
-      adminPassword.value = '';
-      loginError.innerHTML = '';
-    }
-    setTimeout(() => { clickCount = 0; }, 1000);
+  // Direct admin login trigger (click "Admin" link in footer)
+  adminTrigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModalOverlay.classList.add('active');
+    adminPassword.value = '';
+    loginError.innerHTML = '';
   });
 
   // Login

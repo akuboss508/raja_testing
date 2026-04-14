@@ -187,6 +187,16 @@ body {
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
 
+/* Contact Bar */
+.contact-bar { background: var(--dark); color: white; padding: 30px 0; }
+.contact-flex { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+.contact-item { display: flex; align-items: center; gap: 12px; font-size: 1rem; }
+.contact-item i { color: var(--accent); font-size: 1.3rem; }
+
+/* Footer */
+.footer { background: #111; color: #aaa; padding: 24px 0; text-align: center; }
+.footer p { margin: 5px 0; }
+
 /* Admin Modals */
 .modal-overlay {
   position: fixed;
@@ -278,16 +288,6 @@ body {
 .admin-table .actions i:hover {
   color: var(--primary);
 }
-
-/* Contact Bar */
-.contact-bar { background: var(--dark); color: white; padding: 30px 0; }
-.contact-flex { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
-.contact-item { display: flex; align-items: center; gap: 12px; font-size: 1rem; }
-.contact-item i { color: var(--accent); font-size: 1.3rem; }
-
-/* Footer */
-.footer { background: #111; color: #aaa; padding: 24px 0; text-align: center; }
-.footer p { margin: 5px 0; }
 
 /* Responsive */
 @media (max-width: 900px) {
